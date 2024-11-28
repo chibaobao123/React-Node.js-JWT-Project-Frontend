@@ -25,6 +25,11 @@ instance.interceptors.response.use(
   function (response) {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
+
+    // trả về data không cần trả về
+    //những thứ dư thừa như header, request, status,...
+    if (response && response.data) return response.data;
+
     return response;
   },
   function (error) {
