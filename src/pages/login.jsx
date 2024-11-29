@@ -9,7 +9,8 @@ const LoginPage = () => {
     const res = await loginUserApi(email, password);
     console.log("Success:", res);
 
-    if (res) {
+    if (res && res.EC === 0) {
+      localStorage.setItem("access_token", res.access_token);
       notification.success({
         message: "Login user",
         description: "success",
@@ -18,7 +19,7 @@ const LoginPage = () => {
     } else {
       notification.error({
         message: "Login user",
-        description: "ERROR",
+        description: res?.EM ?? "ERROR",
       });
     }
   };
@@ -68,7 +69,7 @@ const LoginPage = () => {
 
         <Form.Item>
           <Button type="primary" htmlType="submit">
-            Submit
+            Login
           </Button>
         </Form.Item>
       </Form>
