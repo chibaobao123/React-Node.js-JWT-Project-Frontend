@@ -7,7 +7,7 @@ const Header = () => {
   let navigate = useNavigate();
 
   const { auth, setAuth } = useContext(AuthContext);
-  console.log(auth);
+  // console.log(auth);
 
   const items = [
     {
@@ -35,26 +35,7 @@ const Header = () => {
         ...(auth.isAuthenticated
           ? [
               {
-                label: (
-                  <p
-                    style={{ width: "100%", padding: "0", margin: "0" }}
-                    onClick={() => {
-                      console.log("logout");
-                      localStorage.clear("access_token");
-                      setAuth({
-                        isAuthenticated: false,
-                        user: {
-                          emai: "",
-                          name: "",
-                        },
-                      });
-                      console.log(auth);
-                      navigate("/");
-                    }}
-                  >
-                    Logout
-                  </p>
-                ),
+                label: <span>Logout</span>,
                 key: "logout",
               },
             ]
@@ -72,6 +53,20 @@ const Header = () => {
   const onClick = (e) => {
     console.log("click ", e);
     setCurrent(e.key);
+
+    if (e.key === "logout") {
+      // console.log("logout");
+      localStorage.clear("access_token");
+      setAuth({
+        isAuthenticated: false,
+        user: {
+          emai: "",
+          name: "",
+        },
+      });
+      console.log(auth);
+      navigate("/");
+    }
   };
 
   return (

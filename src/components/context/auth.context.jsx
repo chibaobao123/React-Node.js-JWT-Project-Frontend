@@ -17,8 +17,17 @@ export const AuthWrapper = (props) => {
     },
   });
 
+  const [appLoading, setAppLoading] = useState({});
+
   return (
-    <AuthContext.Provider value={{ auth, setAuth }}>
+    <AuthContext.Provider
+      value={{
+        auth,
+        setAuth,
+        appLoading,
+        setAppLoading,
+      }}
+    >
       {props.children}
     </AuthContext.Provider>
   );
