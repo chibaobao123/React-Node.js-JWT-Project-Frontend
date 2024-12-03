@@ -6,6 +6,7 @@ export const AuthContext = createContext({
     emai: "",
     name: "",
   },
+  appLoading: true,
 });
 
 export const AuthWrapper = (props) => {

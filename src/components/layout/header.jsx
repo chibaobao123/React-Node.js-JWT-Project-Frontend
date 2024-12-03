@@ -1,5 +1,9 @@
 import { useContext, useState } from "react";
-import { MailOutlined, SettingOutlined } from "@ant-design/icons";
+import {
+  UserAddOutlined,
+  HomeOutlined,
+  SettingOutlined,
+} from "@ant-design/icons";
 import { Menu } from "antd";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../context/auth.context";
@@ -13,7 +17,7 @@ const Header = () => {
     {
       label: <Link to="/">Home Page</Link>,
       key: "home",
-      icon: <MailOutlined />,
+      icon: <HomeOutlined />,
     },
 
     // Conditional add object to an array while being declared
@@ -22,7 +26,7 @@ const Header = () => {
           {
             label: <Link to="/user">Users</Link>,
             key: "user",
-            icon: <MailOutlined />,
+            icon: <UserAddOutlined />,
           },
         ]
       : []),

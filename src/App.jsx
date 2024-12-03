@@ -20,7 +20,7 @@ function App() {
       const res = await axios.get(`/v1/api/account`);
       console.log(res);
 
-      if (res) {
+      if (res && !res.error) {
         setAuth({
           isAuthenticated: true,
           user: {
